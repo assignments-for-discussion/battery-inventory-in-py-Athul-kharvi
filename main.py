@@ -1,10 +1,10 @@
 def count_batteries_by_health(present_capacities):
     rated_capacity = 120  # All batteries are assumed to have the same rated capacity
-    
+
     counts = {
         "healthy": 0,
         "exchange": 0,
-        "failed": 0
+        "failed": 0,
     }
 
     # Classify batteries based on their SoH
@@ -92,7 +92,6 @@ def test_bucketing_by_health():
     assert counts["failed"] == 0    # None are failed
     print("Test case 8 passed.")
 
-
     # A wide range of batteries, including edge cases, negative values, and extreme values
     present_capacities = [-20, 60, 72, 80, 81, 100, 110, 125, 130, 0, 50, 90]
     counts = count_batteries_by_health(present_capacities)
@@ -100,9 +99,6 @@ def test_bucketing_by_health():
     assert counts["exchange"] == 3  # 80, 81, 90
     assert counts["failed"] == 4    # 60, 72, 0, 50
     print("Test case 9 passed.")
-
-
-
 
 if __name__ == '__main__':
     test_bucketing_by_health()
